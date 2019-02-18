@@ -1,6 +1,4 @@
-# raspberry-based-home-security
-
-'import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 from picamera import PiCamera
 from time import sleep
 import time
@@ -193,5 +191,4 @@ while(True):
                 telegram_bot.sendMessage (trail, str("INTRUDER DETECTED"))
                 telegram_bot.sendDocument(trail, document=open('/home/pi/Desktop/image.png'))
         test=[]
-        
-'
+    
