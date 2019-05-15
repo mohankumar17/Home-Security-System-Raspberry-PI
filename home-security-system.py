@@ -9,19 +9,19 @@ import time, datetime
 import telepot
 from telepot.loop import MessageLoop
 now = datetime.datetime.now()
-trail=414539289
+trail=414539289        #comment this initially print chat_id(you will find below)  for your telebot id
 GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BOARD)   #GPIO setup based on Board Pin configuration
 GPIO.setwarnings(False)
 GPIO.setup(5,GPIO.OUT)
-servoPIN=19
+servoPIN=19                  #choose any GPIO pin 
 GPIO.setup(servoPIN,GPIO.OUT)
 pwm=GPIO.PWM(servoPIN,50)
 pwm.start(60)
 MATRIX=[[1,2,3,'A'],[4,5,6,'B'],[7,8,9,'C'],['*',0,'#','D']]
 ROW=[7,11,13,15]
 COL=[12,16,18,22]
-password=[2,2,2,2]
+password=[2,2,2,2]  #choose password
 test=[]
 ch=['*','*','*','*']
 wrong_count=0
@@ -120,11 +120,11 @@ def fprint():
 
 def action(msg):
     chat_id = msg['chat']['id']
-    print(chat_id)
+    print(chat_id)    #print chat_id 
     trail=chat_id
     command = msg['text']
-    print 'Received: %s' % command     
-                        
+    print 'Received: %s' % command    #python 2  
+    #print(command)                    
     if command=='/status':
         telegram_bot.sendMessage (chat_id, str("INTRUDER DETECTED"))
     elif command == '/unlock':
@@ -139,7 +139,7 @@ def action(msg):
         telegram_bot.sendMessage (chat_id, str("DOOR LOCKED"))
     
     elif command == '/photo':
-        telegram_bot.sendDocument(chat_id, document=open('/home/pi/Desktop/image.png'))
+        telegram_bot.sendDocument(chat_id, document=open('/home/pi/Desktop/image.png')) #choose location of image captured
     elif command == '/off':
         telegram_bot.sendMessage (chat_id, str("SYSTEM TURNED OFF"))
         exit()
@@ -147,10 +147,10 @@ def action(msg):
         telegram_bot.sendMessage (trail, str("INTRUDER DETECTED"))
         
                                
-telegram_bot = telepot.Bot('523941593:AAFRkZ7Ue2ktbX0-ei6kxer7wvCHywHN7oA')
+telegram_bot = telepot.Bot('*******************************')  #use your telegram chat_id
 print (telegram_bot.getMe())
 MessageLoop(telegram_bot, action).run_as_thread()
-print 'Up and Running....'
+print ('Up and Running....')
 s_mode=0
 while(True):
         keypad()
@@ -187,8 +187,8 @@ while(True):
                         i=i+1
                 print("Sending Message to the owner")
                 sleep(1)
-                camera.capture('/home/pi/Desktop/image.png')
+                camera.capture('/home/pi/Desktop/image.png')   #you can choose different location
                 telegram_bot.sendMessage (trail, str("INTRUDER DETECTED"))
-                telegram_bot.sendDocument(trail, document=open('/home/pi/Desktop/image.png'))
+                telegram_bot.sendDocument(trail, document=open('/home/pi/Desktop/image.png'))  
         test=[]
     
