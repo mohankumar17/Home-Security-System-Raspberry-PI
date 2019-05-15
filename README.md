@@ -1,4 +1,4 @@
-# home-security-system-raspi
+# Home-Security-System-Raspberry Pi and IOT
 This is a Python code for Internet of Things based Home Security System using Raspberry pi .
 The idea of home security to prevent robberies and thefts.
 We created a security system that can be controlled by the user and operates according to user’s instructions.
