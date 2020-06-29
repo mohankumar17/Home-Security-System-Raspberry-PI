@@ -5,9 +5,8 @@ We created a security system that can be controlled by the user and operates acc
 The system will detect the presence of intruder and alert the user by sending him a message through telegram. 
 It uses an android platform called “Telegram” to interact or control the system, which represents the real-worlds problem like theft-detection etc.
 
-Working:
-As system turns ‘ON’, telegram services will be running in the background. So, door is unlocked or locked remotely.
-As soon as user enters the input via keypad or places the finger on fingerprint sensor, system checked for the correct match of fingerprint or password.
-Initially, correct password is entered which unlocked the door and even tried with correct fingerprint which yielded the same output.
-Later, an unenrolled finger is placed on sensor which didn’t unlock the door even a password is entered incorrectly which gave the same output.
-The Pi camera captured photo and a text message named “INTRUDER DETECTED” along with the photo sent to our mobile phone via telegram application. Later, door is unlocked and locked remotely using some set of commands.
+# Working:
+1. Intially, user needs to enroll his/her fingerprint and password (0-9).
+2. If any one gives the correct input via keypad or the fingerprint is matched, then system unlocks the door with the help of servo motor attached to the door.
+3. If fingerprint does not match with the enrolled one and password is entered incorrectly for three time, then an alert along with the photo of an intruder will be sent to the owner via telegram bot.
+4. Door can be unlocked or locked remotely using the commands in telegram (Remote monitoring).
